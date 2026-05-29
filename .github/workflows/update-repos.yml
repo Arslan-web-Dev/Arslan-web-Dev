@@ -1,0 +1,110 @@
+# ═══════════════════════════════════════════════════════════════════
+# Workflow: Auto Update Latest Repositories
+# Purpose:  Fetches latest repos from GitHub API and updates README.md
+#           Runs every 6 hours and on every push to main branch
+# Author:   Arslan-web-Dev
+# ═══════════════════════════════════════════════════════════════════
+
+name: 🔄 Auto Update Repositories
+
+on:
+  # ── Run on every push to main (instant update when you push new code)
+  push:
+    branches: [main]
+
+  # ── Run on a schedule: every 6 hours
+  schedule:
+    - cron: "0 */6 * * *"
+
+  # ── Allow manual trigger from GitHub Actions UI
+  workflow_dispatch:
+    inputs:
+      force_update:
+        description: "Force update even if no changes detected"
+        required: false
+        default: "false"
+        type: boolean
+
+# ── Only allow one run at a time to prevent race conditions
+concurrency:
+  group: update-repos
+  cancel-in-progress: true
+
+jobs:
+  update-readme:
+    name: 📦 Fetch & Update Repository List
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    # ── Permissions needed to push changes back to the repo
+    permissions:
+      contents: write
+
+    steps:
+      # ── Step 1: Checkout the repository
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      # ── Step 2: Set up Node.js for the update script
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: scripts/package.json
+
+      # ── Step 3: Install dependencies for the script
+      - name: 📦 Install Script Dependencies
+        working-directory: scripts
+        run: npm install
+
+      # ── Step 4: Run the repository fetcher script
+      #           This hits GitHub API, filters repos, and updates README
+      - name: 🚀 Run Repository Update Script
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_USERNAME: Arslan-web-Dev
+          # Controls how many repos to show in Latest Projects section
+          MAX_REPOS: "10"
+          # Sort by: stars | updated | created
+          SORT_BY: "updated"
+        run: node scripts/update-repos.js
+
+      # ── Step 5: Configure git identity for the commit
+      - name: 🔧 Configure Git
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+      # ── Step 6: Check if README was actually changed
+      - name: 🔍 Check for Changes
+        id: changes
+        run: |
+          if git diff --quiet README.md; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "ℹ️ No changes detected in README.md"
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "✅ Changes detected, will commit"
+          fi
+
+      # ── Step 7: Commit and push only if there were changes
+      - name: 💾 Commit & Push Changes
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git add README.md
+          git commit -m "🤖 Auto-update: Latest repos synced [$(date -u '+%Y-%m-%d %H:%M UTC')]"
+          git push
+
+      # ── Step 8: Summary report
+      - name: 📊 Update Summary
+        run: |
+          echo "### 🔄 Repository Update Complete" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Username:** Arslan-web-Dev" >> $GITHUB_STEP_SUMMARY
+          echo "- **Timestamp:** $(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_STEP_SUMMARY
+          echo "- **Changes:** ${{ steps.changes.outputs.changed }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Trigger:** ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY

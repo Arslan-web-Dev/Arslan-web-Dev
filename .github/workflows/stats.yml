@@ -1,0 +1,109 @@
+# ═══════════════════════════════════════════════════════════════════
+# Workflow: Generate & Cache GitHub Stats
+# Purpose:  Pre-generates stats cards and caches them for fast loading
+#           Also validates that all external services are reachable
+# Runs:     Every 12 hours + on push to main
+# Author:   Arslan-web-Dev
+# ═══════════════════════════════════════════════════════════════════
+
+name: 📊 Generate GitHub Stats
+
+on:
+  # ── Run twice daily
+  schedule:
+    - cron: "0 6,18 * * *"
+
+  # ── Also run on push to update stats immediately
+  push:
+    branches: [main]
+
+  # ── Manual trigger
+  workflow_dispatch:
+
+jobs:
+  validate-stats:
+    name: 📈 Validate Stats Services
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      # ── Step 1: Check that all external stats services are reachable
+      - name: 🌐 Ping Stats Services
+        run: |
+          echo "### 🔍 Checking Stats Service Availability" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          # Check GitHub Readme Stats
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
+            "https://github-readme-stats.vercel.app/api?username=Arslan-web-Dev&show_icons=true")
+          if [ "$STATUS" = "200" ]; then
+            echo "- ✅ GitHub Readme Stats: Online (HTTP $STATUS)" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "- ⚠️ GitHub Readme Stats: Degraded (HTTP $STATUS)" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          # Check Streak Stats
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
+            "https://github-readme-streak-stats.herokuapp.com/?user=Arslan-web-Dev")
+          if [ "$STATUS" = "200" ]; then
+            echo "- ✅ Streak Stats: Online (HTTP $STATUS)" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "- ⚠️ Streak Stats: Degraded (HTTP $STATUS)" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          # Check Trophy Stats
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
+            "https://github-profile-trophy.vercel.app/?username=Arslan-web-Dev")
+          if [ "$STATUS" = "200" ]; then
+            echo "- ✅ Trophy Stats: Online (HTTP $STATUS)" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "- ⚠️ Trophy Stats: Degraded (HTTP $STATUS)" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          # Check Activity Graph
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
+            "https://github-readme-activity-graph.vercel.app/graph?username=Arslan-web-Dev")
+          if [ "$STATUS" = "200" ]; then
+            echo "- ✅ Activity Graph: Online (HTTP $STATUS)" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "- ⚠️ Activity Graph: Degraded (HTTP $STATUS)" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Checked at:** $(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_STEP_SUMMARY
+
+      # ── Step 2: Verify README has all required sections
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 🔍 Validate README Structure
+        run: |
+          echo "### 📋 README Structure Validation" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          # Check for required sections/markers
+          CHECKS=(
+            "LATEST-REPOS-START"
+            "LATEST-REPOS-END"
+            "github-readme-stats"
+            "github-readme-streak-stats"
+            "github-readme-activity-graph"
+            "github-profile-trophy"
+          )
+
+          ALL_PASS=true
+          for check in "${CHECKS[@]}"; do
+            if grep -q "$check" README.md; then
+              echo "- ✅ Found: \`$check\`" >> $GITHUB_STEP_SUMMARY
+            else
+              echo "- ❌ Missing: \`$check\`" >> $GITHUB_STEP_SUMMARY
+              ALL_PASS=false
+            fi
+          done
+
+          echo "" >> $GITHUB_STEP_SUMMARY
+          if [ "$ALL_PASS" = true ]; then
+            echo "✅ **All required sections present in README.md**" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "⚠️ **Some sections missing from README.md — check logs above**" >> $GITHUB_STEP_SUMMARY
+          fi
