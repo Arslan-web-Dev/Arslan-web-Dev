@@ -1,0 +1,10 @@
+{
+  "name": "github-profile-updater",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Auto-updates repositories listed in README.md",
+  "main": "update-repos.js",
+  "scripts": {
+    "start": "node update-repos.js"
+  }
+}

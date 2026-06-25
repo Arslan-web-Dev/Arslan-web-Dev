@@ -252,8 +252,23 @@ function generateMarkdown(repos) {
         ? `![Stars](https://img.shields.io/badge/⭐_${stars}-ffd700?style=flat-square&labelColor=0d1117)`
         : `![Stars](https://img.shields.io/badge/⭐_0-555?style=flat-square&labelColor=0d1117)`;
 
-    // Language badge
-    const langBadge = `![${lang}](https://img.shields.io/badge/${encodeURIComponent(lang)}-${langColor}?style=flat-square&logo=${encodeURIComponent(lang.toLowerCase())}&logoColor=white)`;
+    // Language badge logo mapping for SimpleIcons compatibility
+    const LOGO_MAPPING = {
+      "C++": "cplusplus",
+      "C#": "csharp",
+      "Go": "go",
+      "HTML": "html5",
+      "CSS": "css3",
+      "Shell": "gnubash",
+      "Vue": "vuedotjs",
+      "Svelte": "svelte",
+      "JavaScript": "javascript",
+      "TypeScript": "typescript",
+      "Python": "python",
+      "Java": "openjdk"
+    };
+    const logoName = LOGO_MAPPING[lang] || lang.toLowerCase();
+    const langBadge = `![${lang}](https://img.shields.io/badge/${encodeURIComponent(lang)}-${langColor}?style=flat-square&logo=${encodeURIComponent(logoName)}&logoColor=white)`;
 
     const updated = timeAgo(repo.updated_at);
 
