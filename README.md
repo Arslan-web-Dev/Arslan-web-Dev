@@ -33,31 +33,23 @@
 <table align="center" width="100%" style="border-collapse: collapse; border: none; margin: 20px 0;">
   <tr>
     <td style="background: linear-gradient(135deg, #0d1117 0%, #161b22 50%, #0d1117 100%); padding: 40px 30px; border-radius: 16px; border: 1px solid #30363d; box-shadow: 0 10px 35px rgba(0, 217, 255, 0.15);">
-      <table width="100%" style="border-collapse: collapse; border: none;">
-        <tr>
-          <td width="65%" valign="middle" style="border: none;">
-            <h1 style="color: #00D9FF; margin: 0 0 10px 0; font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 38px; font-weight: 900; letter-spacing: 2px;">MUHAMMAD ARSLAN</h1>
-            <p style="color: #ffffff; font-size: 20px; margin: 0 0 15px 0; font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-weight: 700; letter-spacing: 0.5px;">
-              Full Stack Developer & AI SaaS Engineer
-            </p>
-            <p style="color: #8b949e; font-size: 15px; margin: 0 0 25px 0; line-height: 1.6; font-family: -apple-system, BlinkMacSystemFont, sans-serif; max-width: 90%;">
-              Building high-performance, intelligent web solutions. Specialized in production-ready Next.js architectures, scalable APIs, and seamless LLM integrations.
-            </p>
-            <div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #00D9FF;">
-              <code>const focus = ['Next.js', 'React', 'TypeScript', 'Node.js', 'AI'];</code>
-            </div>
-          </td>
-          <td width="35%" valign="middle" style="border: none; text-align: center; padding-left: 20px;">
-            <div style="background: rgba(13, 17, 23, 0.7); border: 1px solid #30363d; border-radius: 12px; padding: 20px; text-align: left; box-shadow: inset 0 0 10px rgba(0,217,255,0.05);">
-              <div style="color: #58a6ff; font-weight: bold; font-size: 12px; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 1px;">⚡ System Status</div>
-              <div style="margin-bottom: 6px; font-size: 13px; color: #c9d1d9;">🚀 <b>Status:</b> Available for Work</div>
-              <div style="margin-bottom: 6px; font-size: 13px; color: #c9d1d9;">💼 <b>Role:</b> Full-Stack & AI</div>
-              <div style="margin-bottom: 6px; font-size: 13px; color: #c9d1d9;">🌎 <b>Location:</b> Pakistan (Remote)</div>
-              <div style="font-size: 13px; color: #c9d1d9;">⚡ <b>Stack:</b> TypeScript-First</div>
-            </div>
-          </td>
-        </tr>
-      </table>
+      <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;">
+        <div style="flex: 1; min-width: 290px; padding: 10px;">
+          <h1 style="color: #00D9FF; margin: 0 0 10px 0; font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 38px; font-weight: 900; letter-spacing: 2px;">MUHAMMAD ARSLAN</h1>
+          <p style="color: #ffffff; font-size: 20px; margin: 0 0 15px 0; font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-weight: 700; letter-spacing: 0.5px;">
+            Full Stack Developer & AI SaaS Engineer
+          </p>
+          <p style="color: #8b949e; font-size: 15px; margin: 0 0 25px 0; line-height: 1.6; font-family: -apple-system, BlinkMacSystemFont, sans-serif; max-width: 90%;">
+            Building high-performance, intelligent web solutions. Specialized in production-ready Next.js architectures, scalable APIs, and seamless LLM integrations.
+          </p>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #00D9FF;">
+            <code>const focus = ['Next.js', 'React', 'TypeScript', 'Node.js', 'AI'];</code>
+          </div>
+        </div>
+        <div style="flex: 0 0 260px; padding: 10px; margin: 0 auto; text-align: center;">
+          <img src="./assets/developer_3d.png" alt="3D Developer Illustration" style="width: 100%; border-radius: 12px; border: 1px solid #30363d; box-shadow: 0 8px 24px rgba(0, 217, 255, 0.15);" />
+        </div>
+      </div>
     </td>
   </tr>
 </table>
@@ -70,71 +62,70 @@
 
 ## 🧠 About Me
 
-<table width="100%" style="border-collapse: collapse; border: none; margin: 10px 0;">
-  <tr>
-    <td width="50%" valign="top" style="border: none; padding-right: 20px;">
-      <h3 style="color: #00D9FF; margin-top: 0;">🚀 Driven by Code, Powered by AI</h3>
-      <p style="font-size: 15px; line-height: 1.6; color: #c9d1d9; margin-bottom: 12px;">
-        I bridge the gap between robust backend structures and visually appealing, interactive frontends. My goal is to engineer web applications that are fast, visually premium, and structurally sound.
-      </p>
-      
-      <table width="100%" style="border-collapse: collapse; border: none; margin-top: 15px;">
-        <tr>
-          <td valign="top" width="10%" style="border: none; font-size: 20px;">💡</td>
-          <td style="border: none; padding-bottom: 12px;">
-            <b style="color: #ffffff;">Core Philosophy</b><br/>
-            <span style="font-size: 13.5px; color: #8b949e;">Write maintainable code, test continuously, and prioritize performance and UI responsiveness.</span>
-          </td>
-        </tr>
-        <tr>
-          <td valign="top" width="10%" style="border: none; font-size: 20px;">🧠</td>
-          <td style="border: none; padding-bottom: 12px;">
-            <b style="color: #ffffff;">AI & Analytics</b><br/>
-            <span style="font-size: 13.5px; color: #8b949e;">Integrating OpenAI models, building vector workflows, and creating smart dashboards.</span>
-          </td>
-        </tr>
-        <tr>
-          <td valign="top" width="10%" style="border: none; font-size: 20px;">⚡</td>
-          <td style="border: none;">
-            <b style="color: #ffffff;">Agility</b><br/>
-            <span style="font-size: 13.5px; color: #8b949e;">Rapid prototyping, clean feature scaling, and professional deployment setups.</span>
-          </td>
-        </tr>
-      </table>
-    </td>
-    <td width="50%" valign="top" style="border: none;">
-      <!-- Simulated IDE Window -->
-      <div style="background: #0d1117; border: 1px solid #30363d; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); overflow: hidden;">
-        <!-- Window Controls Tab Bar -->
-        <div style="background: #161b22; padding: 10px 15px; border-bottom: 1px solid #30363d; display: flex; align-items: center; justify-content: space-between;">
-          <div style="display: flex; gap: 6px;">
-            <span style="background: #ff5f56; width: 12px; height: 12px; border-radius: 50%; display: inline-block;"></span>
-            <span style="background: #ffbd2e; width: 12px; height: 12px; border-radius: 50%; display: inline-block;"></span>
-            <span style="background: #27c93f; width: 12px; height: 12px; border-radius: 50%; display: inline-block;"></span>
-          </div>
-          <div style="font-family: monospace; font-size: 12px; color: #8b949e;">arslan.ts</div>
-          <div></div>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; margin: 15px 0;">
+  <div style="flex: 1; min-width: 290px;">
+    <h3 style="color: #00D9FF; margin-top: 0;">🚀 Driven by Code, Powered by AI</h3>
+    <p style="font-size: 15px; line-height: 1.6; color: #c9d1d9; margin-bottom: 12px;">
+      I bridge the gap between robust backend structures and visually appealing, interactive frontends. My goal is to engineer web applications that are fast, visually premium, and structurally sound.
+    </p>
+    
+    <table width="100%" style="border-collapse: collapse; border: none; margin-top: 15px;">
+      <tr>
+        <td valign="top" width="10%" style="border: none; font-size: 20px;">💡</td>
+        <td style="border: none; padding-bottom: 12px;">
+          <b style="color: #ffffff;">Core Philosophy</b><br/>
+          <span style="font-size: 13.5px; color: #8b949e;">Write maintainable code, test continuously, and prioritize performance and UI responsiveness.</span>
+        </td>
+      </tr>
+      <tr>
+        <td valign="top" width="10%" style="border: none; font-size: 20px;">🧠</td>
+        <td style="border: none; padding-bottom: 12px;">
+          <b style="color: #ffffff;">AI & Analytics</b><br/>
+          <span style="font-size: 13.5px; color: #8b949e;">Integrating OpenAI models, building vector workflows, and creating smart dashboards.</span>
+        </td>
+      </tr>
+      <tr>
+        <td valign="top" width="10%" style="border: none; font-size: 20px;">⚡</td>
+        <td style="border: none;">
+          <b style="color: #ffffff;">Agility</b><br/>
+          <span style="font-size: 13.5px; color: #8b949e;">Rapid prototyping, clean feature scaling, and professional deployment setups.</span>
+        </td>
+      </tr>
+    </table>
+  </div>
+  
+  <div style="flex: 1; min-width: 290px;">
+    <!-- Simulated IDE Window -->
+    <div style="background: #0d1117; border: 1px solid #30363d; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); overflow: hidden;">
+      <!-- Window Controls Tab Bar -->
+      <div style="background: #161b22; padding: 10px 15px; border-bottom: 1px solid #30363d; display: flex; align-items: center; justify-content: space-between;">
+        <div style="display: flex; gap: 6px;">
+          <span style="background: #ff5f56; width: 12px; height: 12px; border-radius: 50%; display: inline-block;"></span>
+          <span style="background: #ffbd2e; width: 12px; height: 12px; border-radius: 50%; display: inline-block;"></span>
+          <span style="background: #27c93f; width: 12px; height: 12px; border-radius: 50%; display: inline-block;"></span>
         </div>
-        <!-- Code Content -->
-        <div style="padding: 18px; font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 12.5px; line-height: 1.6; overflow-x: auto; color: #c9d1d9;">
-          <div><span style="color: #ff7b72;">import</span> { <span style="color: #79c0ff;">Developer</span> } <span style="color: #ff7b72;">from</span> <span style="color: #a5d6ff;">'./core'</span>;</div>
-          <br/>
-          <div><span style="color: #ff7b72;">const</span> <span style="color: #d2a8ff;">arslan</span> = <span style="color: #ff7b72;">new</span> <span style="color: #79c0ff;">Developer</span>({</div>
-          <div>&nbsp;&nbsp;name: <span style="color: #a5d6ff;">"Muhammad Arslan"</span>,</div>
-          <div>&nbsp;&nbsp;origin: <span style="color: #a5d6ff;">"Pakistan 🇵🇰"</span>,</div>
-          <div>&nbsp;&nbsp;metrics: {</div>
-          <div>&nbsp;&nbsp;&nbsp;&nbsp;codeQuality: <span style="color: #79c0ff;">"A+"</span>,</div>
-          <div>&nbsp;&nbsp;&nbsp;&nbsp;efficiency: <span style="color: #79c0ff;">"99%"</span>,</div>
-          <div>&nbsp;&nbsp;&nbsp;&nbsp;coffeeInput: <span style="color: #a5d6ff;">"Infinity"</span></div>
-          <div>&nbsp;&nbsp;},</div>
-          <div>&nbsp;&nbsp;specialty: <span style="color: #a5d6ff;">"SaaS & AI Integrations"</span>,</div>
-          <div>&nbsp;&nbsp;currentFocus: <span style="color: #a5d6ff;">"LLM Orchestration & Web Dev"</span></div>
-          <div>});</div>
-        </div>
+        <div style="font-family: monospace; font-size: 12px; color: #8b949e;">arslan.ts</div>
+        <div></div>
       </div>
-    </td>
-  </tr>
-</table>
+      <!-- Code Content -->
+      <div style="padding: 18px; font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 12.5px; line-height: 1.6; overflow-x: auto; color: #c9d1d9;">
+        <div><span style="color: #ff7b72;">import</span> { <span style="color: #79c0ff;">Developer</span> } <span style="color: #ff7b72;">from</span> <span style="color: #a5d6ff;">'./core'</span>;</div>
+        <br/>
+        <div><span style="color: #ff7b72;">const</span> <span style="color: #d2a8ff;">arslan</span> = <span style="color: #ff7b72;">new</span> <span style="color: #79c0ff;">Developer</span>({</div>
+        <div>&nbsp;&nbsp;name: <span style="color: #a5d6ff;">"Muhammad Arslan"</span>,</div>
+        <div>&nbsp;&nbsp;origin: <span style="color: #a5d6ff;">"Pakistan 🇵🇰"</span>,</div>
+        <div>&nbsp;&nbsp;metrics: {</div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;codeQuality: <span style="color: #79c0ff;">"A+"</span>,</div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;efficiency: <span style="color: #79c0ff;">"99%"</span>,</div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;coffeeInput: <span style="color: #a5d6ff;">"Infinity"</span></div>
+        <div>&nbsp;&nbsp;},</div>
+        <div>&nbsp;&nbsp;specialty: <span style="color: #a5d6ff;">"SaaS & AI Integrations"</span>,</div>
+        <div>&nbsp;&nbsp;currentFocus: <span style="color: #a5d6ff;">"LLM Orchestration & Web Dev"</span></div>
+        <div>});</div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <br/>
 
